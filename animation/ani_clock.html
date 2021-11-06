@@ -1,0 +1,124 @@
+<html lang="en"><head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+  <title>CodePen - HTML5 Canvas animated clock</title>
+  
+  
+  
+  
+<style>
+body{background-color: gray;}
+h1{
+  font-family: helvetica;
+  font-size:2.5rem ;
+  color:black;
+  position: relative;
+  top:80px;
+  z-index: -1;
+}
+#canvas {
+  display:block;
+  margin:5vh auto;
+  border-radius:50%;
+  box-shadow: 0 5px 14px black;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no">
+<h2><a href="../index.html">Startseite</a></h2>
+  <canvas id="canvas" width="400" height="400"></canvas>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
+
+  
+      <script id="rendered-js">
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+ctx.strokeStyle = '#28d1fa';
+
+ctx.lineWidth = 17;
+ctx.lineCap = 'round';
+ctx.shadowBlur = 15;
+ctx.shadowColor = '#28d1fa';
+
+function degToRad(degree) {
+  var factor = Math.PI / 180;
+  return degree * factor;
+}
+
+function renderTime() {
+
+  var now = new Date();
+  var today = now.toDateString();
+  var time = now.toLocaleTimeString();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var milliseconds = now.getMilliseconds();
+  var newSeconds = seconds + milliseconds / 1000;
+
+  // Background
+  gradient = ctx.createRadialGradient(200, 200, 5, 200, 200, 300);
+  gradient.addColorStop(0, '#09303a');
+  gradient.addColorStop(1, '#000000');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 400, 400);
+
+  // Hours
+  ctx.beginPath();
+  ctx.arc(200, 200, 170, degToRad(270), degToRad(hours * 30 - 90));
+  ctx.stroke();
+
+  // Minutes
+  ctx.beginPath();
+  ctx.arc(200, 200, 140, degToRad(270), degToRad(minutes * 6 - 90));
+  ctx.stroke();
+  // Seconds
+  ctx.beginPath();
+  ctx.arc(200, 200, 110, degToRad(270), degToRad(newSeconds * 6 - 90));
+  ctx.stroke();
+  // Date 
+  ctx.font = "20px Helvetica";
+  ctx.fillStyle = '#28d1fa';
+  ctx.fillText(today, 140, 200);
+
+  // Time
+  ctx.font = "15px Helvetica";
+  ctx.fillStyle = '#28d1fa';
+  ctx.fillText(time, 140, 230);
+
+}
+setInterval(renderTime, 40);
+//# sourceURL=pen.js
+    </script>
+
+  
+
+
+
+
+ 
+</body></html>
