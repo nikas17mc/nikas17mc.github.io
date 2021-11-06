@@ -1,0 +1,676 @@
+<html lang="de" class="-ms-,-moz-">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="author" content="Nikolai A Kovalev" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=2" />
+	<meta name="robots" content="index, follow" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="desciption" content="Home Site" />
+	<meta http-equiv="X-UA-Compatible" content="Firefox" />
+	
+<title> Startseite </title>
+		<link rel="shortcut icon" type="image/x-icon" href="icons/startseite.ico" />
+		<link href="styles/style.css" rel="stylesheet" type="text/css" data-inprogress="" />
+		<link rel="stylesheet" href="styles/custom.css" data-inprogress="" />
+		<link rel="stylesheet" href="styles/solar_system.css" data-inprogress="" />
+		<link rel="stylesheet" href="styles/style(1).css" type="text/css" media="screen" />
+		
+<style>
+ul.sdt_menu{
+	margin:0;
+	padding:0;
+	list-style: none;
+	font-family:"Myriad Pro", "Trebuchet MS", sans-serif;
+	font-size:15px;
+	width:1450px;
+}
+ul.sdt_menu a{
+	text-decoration:none;
+	outline:none;
+}
+ul.sdt_menu li{
+	float:left;
+	width:172px;
+	height:85px;
+	position:relative;
+	cursor:pointer;
+}
+ul.sdt_menu li > a{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:170px;
+	height:85px;
+	z-index:12;
+	background:transparent url(../bilder/wp4676582.jpg) no-repeat bottom right;
+	-moz-box-shadow:0px 0px 2px #000 inset;
+	-webkit-box-shadow:0px 0px 2px #000 inset;
+	box-shadow:0px 0px 2px #000 inset;
+}
+ul.sdt_menu li a img{
+	border:none;
+	position:absolute;
+	width:0px;
+	height:0px;
+	bottom:0px;
+	left:85px;
+	z-index:100;
+	-moz-box-shadow:0px 0px 4px #000;
+	-webkit-box-shadow:0px 0px 4px #000;
+	box-shadow:0px 0px 4px #000;
+}
+ul.sdt_menu li span.sdt_wrap{
+	position:absolute;
+	top:30px;
+	left:0px;
+	width:170px;
+	height:40px;
+	z-index:30;
+}
+ul.sdt_menu li span.sdt_active{
+	position:absolute;
+	background:#111;
+	top:85px;
+	width:170px;
+	height:0px;
+	left:0px;
+	z-index:14;
+	-moz-box-shadow:0px 0px 4px #000 inset;
+	-webkit-box-shadow:0px 0px 4px #000 inset;
+	box-shadow:0px 0px 4px #000 inset;
+}
+ul.sdt_menu li span span.sdt_link,
+ul.sdt_menu li span span.sdt_descr,
+ul.sdt_menu li div.sdt_box a{
+	margin-left:15px;
+	text-transform:uppercase;
+	text-shadow:1px 1px 1px #000;
+}
+ul.sdt_menu li span span.sdt_link{
+	color:#fff;
+	font-size:24px;
+	float:left;
+	clear:both;
+}
+ul.sdt_menu li span span.sdt_descr{
+	color:#0B75AF;
+	float:left;
+	clear:both;
+	width:170px; /*For dumbass IE7*/
+	font-size:10px;
+	letter-spacing:1.5px;
+}
+ul.sdt_menu li div.sdt_box{
+	display:block;
+	position:absolute;
+	width:170px;
+	overflow:hidden;
+	height:250px;
+	top:85px;
+	left:0px;
+	display:none;
+	background:#000;
+}
+ul.sdt_menu li div.sdt_box a{
+	float:left;
+	clear:both;
+	line-height:15px;
+	color:#0B75AF;
+}
+ul.sdt_menu li div.sdt_box a:first-child{
+	margin-top:15px;
+}
+ul.sdt_menu li div.sdt_box a:hover{
+	color:#fff;
+}
+</style>
+<style>
+.container-out {
+font-family: "Fira Sans", sans-serif;
+padding: 15px 0;
+}
+
+.container-in {
+width: 95%;
+margin: 0 auto;
+}
+
+.search-container {
+position: relative;
+max-width: 300px;
+margin: 0 auto;
+text-align: center;
+padding: 15px;
+}
+
+.search-title {
+margin-top: 0;
+margin-bottom: 5px;
+color:  #0df57a;
+}
+
+#search-input {
+width: 90%;
+padding: 13px;
+border-radius: 4px;
+border: 2px solid #1ca0b8;
+font-size: 15px;
+}
+
+#search-input:focus {
+outline: none;
+}
+
+#search-results {
+position: absolute;
+z-index: 10;
+margin: 1px auto;
+background: #1ca0b8;
+width: 90%;
+text-align: left;
+border-radius: 4px;
+border: 2px solid #1ca0b8;
+display: none;
+}
+.search-item {
+color: white;
+cursor: pointer;
+}
+.search-item p {
+margin: 0;
+padding: 10px;
+}
+.search-item:hover {
+background: #2cc7e2;
+}
+#search-data {
+margin-top: 10px;
+color: #1ca0b8;
+}
+#search-data p {
+margin: 0;
+padding: 6px;
+font-size: 16px;
+}
+</style>
+<style>
+	/* (A) POPUP WRAPPER */
+#popwrap {
+  /* (A1) FULLSCREEN COVER*/
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+
+  /* (A2) CENTER BOX ON PAGE */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* (A3) HIDDEN BY DEFAULT */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+}
+
+/* (A4) SHOW POPUP */
+#popwrap.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* (B) POPUP BOX */
+#popbox {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 320px;
+}
+
+/* (C) TITLE + TEXT + CLOSE BUTTON  */
+#poptitle { background: #820000; }
+#poptext { background: #fff; }
+#poptitle, #poptext { padding: 10px; margin: 0; }
+#poptitle, #popclose { font-size: 28px; color: #fff; }
+#poptext {color: green; }
+#popclose {
+  position: absolute;
+  top: 0; right: 5px;
+  cursor: pointer;
+}
+</style>
+<style>
+			span.reference{
+				position:fixed;
+				left:10px;
+				bottom:10px;
+				font-size:12px;
+			}
+			span.reference a{
+				color:#aaa;
+				text-transform:uppercase;
+				text-decoration:none;
+				text-shadow:1px 1px 1px #000;
+				margin-right:30px;
+			}
+			span.reference a:hover{
+				color:#ddd;
+			}
+			ul.sdt_menu{
+				margin-top:80px;
+			}
+</style>
+<style>
+body {
+	height: 100%;
+	margin: 0;
+	background: url("bilder/wp4676582.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+  
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+<script>
+	var pop = {
+  // (A) ATTACH POPUP HTML
+  pWrap : null, // HTML POPUP WRAPPER
+  pTitle : null, // HTML POPUP TITLE
+  ptxt : null, // HTML POPUP TEXT
+  init : function () {
+    // (A1) POPUP WRAPPER
+    pop.pWrap = document.createElement("div");
+    pop.pWrap.id = "popwrap";
+    document.body.appendChild(pop.pWrap);
+
+    // (A2) POPUP BOX
+    let pBox = document.createElement("div");
+    pBox.id = "popbox";
+    pop.pWrap.appendChild(pBox);
+ 
+    // (A3) TITLE
+    pop.pTitle = document.createElement("h1");
+    pop.pTitle.id = "poptitle";
+    pBox.appendChild(pop.pTitle);
+    
+    // (A4) TEXT
+    pop.pText = document.createElement("p");
+    pop.pText.id = "poptext";
+    pBox.appendChild(pop.pText);
+    
+    // (A5) CLOSE BUTTON
+    let pClose = document.createElement("div");
+    pClose.id = "popclose";
+    pClose.innerHTML = "&#9746;";
+    pClose.onclick = pop.close;
+    pBox.appendChild(pClose);
+  },
+
+  // (B) OPEN POPUP
+  open : function (title, text) {
+    pop.pTitle.innerHTML = title;
+    pop.pText.innerHTML = text;
+    pop.pWrap.classList.add("open");
+  },
+
+  // (C) CLOSE POPUP
+  close : function () {
+    pop.pWrap.classList.remove("open");
+  }
+};
+window.addEventListener("DOMContentLoaded", pop.init);
+</script>
+</head>
+<body>
+<header>
+	<h2 class="text_32">Startseite</h2>
+</header>
+		<div>
+			<ul id="sdt_menu" class="sdt_menu">
+				<li>
+					<a href="index2.html">
+						<img src="bilder/images/2.jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">About me</span>
+							<span class="sdt_descr">Get to know me</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="./video.html">
+						<img src="bilder/images/(1).jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Video</span>
+							<span class="sdt_descr">The Kino-Life</span>
+						</span>
+					</a>
+					<div class="sdt_box">
+							<a href="#">Websites</a>
+							<a href="#">Illustrations</a>
+							<a href="#">Photography</a>
+					</div>
+				</li>
+				<li>
+					<a href="next.html">
+						<img src="bilder/images/(2).jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Music</span>
+							<span class="sdt_descr">The Best Atmosphare</span>
+						</span>
+					</a>
+					<div class="sdt_box">
+						<a href="song.html">Experiment Site</a>
+					</div>
+				</li>
+				<li>
+					<a href="test.html">
+						<img src="bilder/images/(3).jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Funny</span>
+							<span class="sdt_descr">I make her experiment with HTML</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="usagilo.html">
+						<img src="bilder/images/(4).jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Experiment</span>
+							<span class="sdt_descr">:::</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="bilder/images/R.gif" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">WebCam_NRW</span>
+							<span class="sdt_descr">The Site to look for the motorway!</span>
+						</span>
+					</a>
+					<div class="sdt_box">
+						<a href="#">(1) Site</a>
+						<a href="#">(2) Site</a>
+						<a href="#">(3) Site</a>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="bilder/images/(7).jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Social Media</span>
+							<span class="sdt_descr">My Social Media</span>
+						</span>
+					</a>
+					<div class="sdt_box">
+						<a target="_blank" href="https://www.google.com">Google</a>
+						<a target="_blank" href="https://www.facebook.com">Facebook</a>
+						<a target="_blank" href="https://www.youtube.com">YouTube</a>
+						<a target="_blank" href="https://vm.tiktok.com/Zegjret3/">TikTok</a>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="bilder/images/(6).gif" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Animation</span>
+							<span class="sdt_descr">Animation... What I find in an Internet</span>
+						</span>
+					</a>
+					<div class="sdt_box">
+						<a target="_blank" href="./animation/roll_caster.html">Advanced HTML5 Animation path</a>
+						<a target="_blank" href="./animation/ani_clock.html">HTML5 Canvas animated clock</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+<section width="100%">
+	<section>
+		<section>
+
+
+		</section>
+		<section>
+			<article>
+				
+			</article>
+			<article>
+			<input type="button" onclick="pop.open('Text', 'Text')" value="Show"/>
+			</article>
+		</section>
+	</section>
+
+	<aside class="aside_box" align="right" width="500" height="900" style="border:1px;">
+		<section width="450">
+			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+			  <g id="logo-text-html" fill="#555" stroke="#555" stroke-width="1">
+				  <path d="M133,11.891h18.461v18.238h16.887V11.891h18.465v55.234h-18.465V48.628h-16.887v18.496H133V11.891L133,11.891z M133,11.891"></path>
+				  <path d="M211.09,30.207h-16.254V11.891h50.976v18.316h-16.261v36.918H211.09V30.207L211.09,30.207z M211.09,30.207"></path>
+				  <path d="M253.902,11.891h19.25l11.844,19.406l11.828-19.406h19.258v55.234h-18.387V39.75l-12.699,19.637h-0.32L271.965,39.75 v27.375h-18.063V11.891L253.902,11.891z M253.902,11.891"></path>
+				  <path d="M325.27,11.891h18.469v36.977h25.961v18.257h-44.43V11.891L325.27,11.891z M325.27,11.891"></path>
+			  </g>
+			  <g id="logo-badge">
+				  <path class="path" fill="#E44D26" stroke="#E44D26" stroke-width="1" d="M250.914,421.492L132.41,388.594L106,92.387h290.187l-26.438,296.16L250.914,421.492z M250.914,421.492"></path>
+				  <path fill="#F16529" stroke="#F16529" stroke-width="3" d="M347.117,369.688l22.594-253.082H251.094v279.703L347.117,369.688z M347.117,369.688"></path>
+				  <path fill="#EBEBEB" stroke="#EBEBEB" stroke-width="3" d="M251.094,262.793v-36.328h-48.07l-3.32-37.203h51.391v-36.328h-0.125H160l0.867,9.746l8.93,100.113 H251.094z M251.094,262.793"></path>
+				  <path fill="#EBEBEB" stroke="#EBEBEB" stroke-width="3" d="M251.094,320.813l-0.16,0.043l-40.457-10.926l-2.586-28.974H188.23h-16.808l5.09,57.039 l74.414,20.661l0.168-0.047V320.813z M251.094,320.813"></path>
+				  <path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="3" d="M335.414,226.465h-9.789h-74.656v36.328h44.734l-4.219,47.113l-40.516,10.938v37.793l74.473-20.642 l0.547-6.136l8.539-95.641L335.414,226.465z M335.414,226.465"></path>
+				  <path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="3" d="M341.973,152.934h-91.004v22.562v13.68v0.086h87.633l0,0h0.117l0.727-8.164l1.656-18.418 L341.973,152.934z M341.973,152.934"></path>
+			  </g>
+			  <g id="logo-text-games" fill="#555" stroke="#555" stroke-width="1">
+				  <path d="M156.986,469.443v-8.936h20.508v18.311c-3.926,2.676-7.397,4.497-10.415,5.464s-6.597,1.45-10.737,1.45
+				  c-5.098,0-9.253-0.869-12.466-2.607c-3.213-1.738-5.703-4.326-7.471-7.764c-1.768-3.438-2.651-7.383-2.651-11.836
+				  c0-4.688,0.967-8.765,2.9-12.231s4.765-6.099,8.496-7.896c2.91-1.387,6.826-2.08,11.748-2.08c4.746,0,8.295,0.43,10.649,1.289
+				  c2.354,0.859,4.307,2.192,5.859,3.999s2.72,4.097,3.501,6.87l-12.803,2.285c-0.527-1.621-1.421-2.861-2.681-3.721
+				  s-2.867-1.289-4.819-1.289c-2.911,0-5.229,1.011-6.958,3.032s-2.593,5.22-2.593,9.595c0,4.648,0.874,7.969,2.622,9.961
+				  c1.748,1.992,4.185,2.988,7.31,2.988c1.484,0,2.9-0.215,4.248-0.645s2.89-1.162,4.629-2.197v-4.043H156.986z"></path>
+				  <path d="M211.78,477.91h-15.067l-2.093,7.09h-13.551l16.143-42.949h14.477L227.826,485h-13.897L211.78,477.91z M209.027,468.623
+				  l-4.741-15.439l-4.691,15.439H209.027z"></path>
+				  <path d="M231.898,442.051h17.454l6.731,26.133l6.683-26.133h17.443V485H269.34v-32.754L260.965,485h-9.838l-8.359-32.754V485
+				  h-10.869V442.051z"></path>
+				  <path d="M288.646,442.051h35.566v9.17h-22.266v6.826h20.654v8.76h-20.654v8.467h22.91V485h-36.211V442.051z"></path>
+				  <path d="M329.691,470.791L342.318,470c0.273,2.051,0.83,3.613,1.67,4.688c1.367,1.738,3.32,2.607,5.859,2.607
+				  c1.895,0,3.354-0.444,4.38-1.333s1.538-1.919,1.538-3.091c0-1.113-0.488-2.109-1.465-2.988s-3.242-1.709-6.797-2.49
+				  c-5.82-1.309-9.971-3.047-12.451-5.215c-2.5-2.168-3.75-4.932-3.75-8.291c0-2.207,0.64-4.292,1.919-6.255s3.203-3.506,5.771-4.629
+				  s6.089-1.685,10.562-1.685c5.488,0,9.673,1.021,12.554,3.062s4.595,5.288,5.142,9.741l-12.51,0.732
+				  c-0.332-1.934-1.03-3.34-2.095-4.219s-2.534-1.318-4.409-1.318c-1.543,0-2.705,0.327-3.486,0.981s-1.172,1.45-1.172,2.388
+				  c0,0.684,0.322,1.299,0.967,1.846c0.625,0.566,2.109,1.094,4.453,1.582c5.801,1.25,9.956,2.515,12.466,3.794
+				  s4.336,2.866,5.479,4.761s1.714,4.014,1.714,6.357c0,2.754-0.762,5.293-2.285,7.617s-3.652,4.087-6.387,5.288
+				  s-6.182,1.802-10.342,1.802c-7.305,0-12.363-1.406-15.176-4.219S330.063,475.127,329.691,470.791z"></path>
+			  </g>
+			</svg>
+		</section>
+		<section>
+			<article>
+				<div class="container-out">
+				<div class="container-in">
+				<div class="search-container">
+					<div class="search-engine">
+						<p class="search-title">Search Names</p>
+						<input
+							type="input"
+							id="search-input"
+							autocomplete="off"
+							placeholder="Hit Enter to Search"/>
+					</div>
+				<div id="search-results"></div>
+			<div id="search-data"></div>
+		</div>
+	</div>
+<script>
+//shortens document.getEgetElementById
+function element(id) {
+return document.getElementById(id);
+}
+let allSearchData = ""; //decleared to collect all search names
+
+//gets each inputs data starting from second input
+function getResults() {
+//gets value of input
+let search = element("search-input").value;
+allSearchData = ""; //clears data for each word typed
+
+hideSearchResults();
+clearSearchResults();
+clearSearchData(); //
+//starts searching from the second input
+if (search.length > 1) {
+    let counter = 0; // counts to 10
+    for (let x of names) {
+    if (counter < 10) {
+        //checks for similarities
+        if (x.toLowerCase().includes(search.toLowerCase())) {
+        //populates the suggestion div
+        element("search-results").innerHTML +=
+            "<div class='search-item' onclick='displayData(\"" +
+            x +
+            "\")'><p>" +
+            x +
+            "</p></div>";
+
+        counter++;
+        }
+    }
+    if (x.toLowerCase().includes(search.toLowerCase()))
+        //saves all the realated names
+        allSearchData += "<p>" + x + "</p>";
+    }
+    displaySearchResults();
+}
+}
+//displays the suggestion div
+function displaySearchResults() {
+element("search-results").style.display = "block";
+}
+//clears the suggestion div
+function clearSearchResults() {
+element("search-results").innerHTML = "";
+}
+
+//hides the suggestion div
+function hideSearchResults() {
+element("search-results").style.display = "none";
+}
+//displays names when you click a suggestions
+function displayData(name) {
+element("search-data").innerHTML = "<p>" + name + "</p>";
+hideSearchResults();
+}
+//displays all related names to your search when you hit enter
+function displayAllData(names) {
+element("search-data").innerHTML = names;
+hideSearchResults();
+}
+//clears names displayed from search result
+function clearSearchData() {
+element("search-data").innerHTML = "";
+}
+//gets results after each input
+element("search-input").oninput = function() {
+getResults();
+};
+
+element("search-input").addEventListener("keyup", function(event) {
+// Number 13 is the "Enter" key on the keyboard
+if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    displayAllData(allSearchData);
+}
+});
+</script>
+<script src="./javascript/database.js"></script>
+</div>
+			</article>
+			<article>
+				<div class="map" id="4545">
+					<iframe align="center" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159898.85562791722!2d6.697507105743542!3d51.229766403227934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c97bf1465907%3A0x42760fc4a2a73b0!2sD%C3%BCsseldorf!5e0!3m2!1sde!2sde!4v1622288311941!5m2!1sde!2sde" width="400" height="350" style="border:1;" allowfullscreen="" loading="lazy"></iframe>
+				</div>
+			</article>
+		</section>
+	</aside>
+</section>
+<footer>
+
+</footer>
+        <!-- The JavaScript -->
+        <script type="text/javascript" src="javascript/jquery.min.js"></script>
+		<script type="text/javascript" src="javascript/jquery.easing.1.3.js"></script>
+        <script type="text/javascript">
+            $(function() {
+				/**
+				* for each menu element, on mouseenter, 
+				* we enlarge the image, and show both sdt_active span and 
+				* sdt_wrap span. If the element has a sub menu (sdt_box),
+				* then we slide it - if the element is the last one in the menu
+				* we slide it to the left, otherwise to the right
+				*/
+                $('#sdt_menu > li').bind('mouseenter',function(){
+					var $elem = $(this);
+					$elem.find('img')
+						 .stop(true)
+						 .animate({
+							'width':'170px',
+							'height':'170px',
+							'left':'0px'
+						 },400,'easeOutBack')
+						 .andSelf()
+						 .find('.sdt_wrap')
+					     .stop(true)
+						 .animate({'top':'140px'},500,'easeOutBack')
+						 .andSelf()
+						 .find('.sdt_active')
+					     .stop(true)
+						 .animate({'height':'170px'},300,function(){
+						var $sub_menu = $elem.find('.sdt_box');
+						if($sub_menu.length){
+							var left = '170px';
+							if($elem.parent().children().length == $elem.index()+1)
+								left = '-170px';
+							$sub_menu.show().animate({'left':left},200);
+						}	
+					});
+				}).bind('mouseleave',function(){
+					var $elem = $(this);
+					var $sub_menu = $elem.find('.sdt_box');
+					if($sub_menu.length)
+						$sub_menu.hide().css('left','0px');
+					
+					$elem.find('.sdt_active')
+						 .stop(true)
+						 .animate({'height':'0px'},300)
+						 .andSelf().find('img')
+						 .stop(true)
+						 .animate({
+							'width':'0px',
+							'height':'0px',
+							'left':'85px'},400)
+						 .andSelf()
+						 .find('.sdt_wrap')
+						 .stop(true)
+						 .animate({'top':'25px'},500);
+				});
+            });
+	</script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+   <title>Song</title>
+   <link rel="shortcut icon" type="image/x-icon" href="icons/song.ico" />
+   <link rel="stylesheet" href="styles/custom.css">
+   <link rel="stylesheet" href="styles/audio-player.css">
+   <link rel="stylesheet" href="./styles/bootstrap.min.css">
+   <!--Subnav Stylesheet-->
+   <link rel="stylesheet" href="./styles/subnav.css" type="text/css" />
+   <!--Popup Stylesheet-->
+   <link rel="stylesheet" href="./styles/popup.css" type="text/css" />
+    <!-- Search-Container -->
+	<link rel="stylesheet" href="./styles/search-container.css" type="text/css" />
+	<script src="./javascript/gtilinwkm.min.js"></script>
+	 <!-- Load font awesome icons -->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <!-- The JavaScript -->
+	  <script type="text/javascript" src="./javascript/jquery.min.js"></script>
+	  <script type="text/javascript" src="./javascript/jquery.easing.1.3.js"></script>
+<style>
+.container {
+  overflow-y: scroll;
+
+  border: 2px solid var(--gs0);
+  border-radius: 8px;
+  height: 40vh;
+  width: 100vh;
+}
+
+.container div {
+  scroll-snap-align: start;
+
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
+</style>
+</head>
+<body>
+	<header>
+		<!-- The navigation menu -->
+		<div class="navbar">
+		  <a href="./index.html">Home</a>
+		  <div class="subnav">
+			<button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+			<div class="subnav-content">
+			  <a href="./index2.html">Alte Seite</a>
+			  <a href="./video.html">Video Seite</a>
+			  <a href="./next.html">Music Seite</a>
+			</div>
+		  </div>
+		  <div class="subnav">
+			<button class="subnavbtn">For me <i class="fa fa-caret-down"></i></button>
+			<div class="subnav-content">
+			  <a href="./test.html">Funny</a>
+			  <a href="./usagilo.html">Experiment</a>
+			  <a href="./Games/Snake/snake.html">Snake_Game</a>
+	  <a href="./Games/Dwarfs/index.html">Dwarfs_Game</a>
+	  <a href="./Games/2048/index.html">2048_Game</a>
+  <a href="./Games/xx142-b2.exe/index.html">xx142-b2_Game</a>
+			</div>
+		  </div>
+		  <div class="subnav">
+			<button class="subnavbtn">WebCam_NRW <i class="fa fa-caret-down"></i></button>
+			<div class="subnav-content">
+			  <a id="myBtn" href="#">Camera</a>
+			</div>
+			</div>
+		  <div class="subnav">
+			<button class="subnavbtn">Animation <i class="fa fa-caret-down"></i></button>
+			<div class="subnav-content">
+			  <a href="./animation/ani_clock.html">Clock</a>
+			  <a href="./animation/roll_caster.html">Roll Caster</a>
+			</div>
+		  </div>
+		  <a href="#">Contact</a>
+		  <div class="subnav" style="align-self: flex-end;">
+			<div class="container-out" style="text-align: right;">
+			  <div class="container-in">
+			  <div class="search-container">
+				<div class="search-engine">
+				  <input
+					type="input"
+					id="search-input"
+					autocomplete="on"
+					placeholder="Hit Enter to Search"/>
+				</div>
+			  <div id="search-results"></div>
+			<div id="search-data"></div>
+		  </div>
+		</div>
+		<script>
+			//shortens document.getEgetElementById
+			function element(id) {
+			return document.getElementById(id);
+			}
+			let allSearchData = ""; //decleared to collect all search names
+			
+			//gets each inputs data starting from second input
+			function getResults() {
+			//gets value of input
+			let search = element("search-input").value;
+			allSearchData = ""; //clears data for each word typed
+			
+			hideSearchResults();
+			clearSearchResults();
+			clearSearchData(); //
+			//starts searching from the second input
+			if (search.length > 0) {
+				let counter = 0; // counts to 10
+				for (let x of name) {
+				if (counter < 10) {
+					//checks for similarities
+					if (x.toLowerCase().includes(search.toLowerCase())) {
+					//populates the suggestion div
+					element("search-results").innerHTML +=
+						"<div class='search-item' onclick='displayData(\"" +
+						x +
+						"\")'><p>" +
+						x +
+						"</p></div>";
+			
+					counter++;
+					}
+				}
+				if (x.toLowerCase().includes(search.toLowerCase()))
+					//saves all the realated names
+					allSearchData += "<p>" + x + "</p>";
+				}
+				displaySearchResults();
+			}
+			}
+			//displays the suggestion div
+			function displaySearchResults() {
+			element("search-results").style.display = "block";
+			}
+			//clears the suggestion div
+			function clearSearchResults() {
+			element("search-results").innerHTML = "";
+			}
+			
+			//hides the suggestion div
+			function hideSearchResults() {
+			element("search-results").style.display = "none";
+			}
+			//displays names when you click a suggestions
+			function displayData(name) {
+			element("search-data").innerHTML = "<p>" + name + "</p>";
+			hideSearchResults();
+			}
+			//clears names displayed from search result
+			function clearSearchData() {
+			element("search-data").innerHTML = "";
+			}
+			//gets results after each input
+			element("search-input").oninput = function() {
+			getResults();
+			};
+			
+			element("search-input").addEventListener("keyup", function(event) {
+			// Number 13 is the "Enter" key on the keyboard
+			if (event.keyCode === 13) {
+				// Cancel the default action, if needed
+				event.preventDefault();
+				// Trigger the button element with a click
+				displayAllData(allSearchData);
+			}
+			});
+			</script>
+			<script src="./javascript/database.js"></script> <!-- Database of Searchsystem -->
+	  </header>
+	<p><img src="bilder/undertale.png" width="450" height="300" alt="Undertale" name="Undertale Megalovania" border="3"/></p>
+	<audio controls>
+	<source src="./video/undertale.mp3" type="audio/mpeg">
+	<source src="./video/undertale.ogg" type="audio/ogg">
+	Ihr Browser unterstützt keine dieser Audioformate
+</audio>
+<p><img src="bilder/Paris-Independence-Day-Background-2560x1440-for-Tablets.jpg" width="500" height="400"></p>
+<audio controls>
+	<source src="./video/henta1_xander-in_head.(instrum).mp3" type="audio/mpeg">
+	<source src="./video/henta1_xander-in_head.(instrum).ogg" type="audio/ogg">
+	Ihr Browser unterstützt keine dieser Audioformate
+</audio>
+
+	<br>
+	
+	<div class="container">
+		<div>
+			<div>
+				<img src="bilder/Paris-Independence-Day-Background-2560x1440-for-Tablets.jpg" width="300" height="180">
+				<audio controls>
+				<source src="./video/henta1_xander-in_head.(instrum).mp3" type="audio/mpeg">
+				<source src="./video/henta1_xander-in_head.(instrum).ogg" type="audio/ogg">
+				Ihr Browser unterstützt keine dieser Audioformate
+				</audio>
+			</div>
+		</div>
+		<div>
+			<div>
+				<img src="bilder/undertale.png" width="300" height="180">
+				<audio controls>
+				<source src="./video/undertale.mp3" type="audio/mpeg">
+				<source src="./video/undertale.ogg" type="audio/ogg">
+				Ihr Browser unterstützt keine dieser Audioformate
+				</audio>
+			</div>
+		</div>
+		<div>
+			<div>
+				3
+			</div>
+		</div>
+		<div>
+			<div>4</div>
+		</div>
+	</div>
+<div class="popul._musik">
+	<table>
+		<th>
+		Zeroch
+		</th>
+		<tr>
+			<td>
+				<iframe width="450" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/717400219&color=%232febdf&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+				<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+				<a href="https://soundcloud.com/andrey-kot-844094161" title="Zeroch" target="_blank" style="color: #cccccc; text-decoration: none;">Zeroch</a> · 
+				<a href="https://soundcloud.com/andrey-kot-844094161/mois-sorry" title="MOIS - Sorry" target="_blank" style="color: #cccccc; text-decoration: none;">MOIS - Sorry</a></div>
+			</td>
+			<td>
+				<iframe width="450" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/998376856&color=%23db1847&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/andrey-kot-844094161" title="Zeroch" target="_blank" style="color: #cccccc; text-decoration: none;">Zeroch</a> · <a href="https://soundcloud.com/andrey-kot-844094161/aria-fredda-let39s-get-stupid" title="Aria Fredda - Let39s Get Stupid" target="_blank" style="color: #cccccc; text-decoration: none;">Aria Fredda - Let39s Get Stupid</a></div>
+			</td>
+			<td>
+				<iframe width="450" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/717401605&color=%23db1847&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/andrey-kot-844094161" title="Zeroch" target="_blank" style="color: #cccccc; text-decoration: none;">Zeroch</a> · <a href="https://soundcloud.com/andrey-kot-844094161/hybrid-screech-purple" title="Hybrid Screech - Purple" target="_blank" style="color: #cccccc; text-decoration: none;">Hybrid Screech - Purple</a></div>
+			</td>
+		</tr>
+		<br>
+		<tr>
+			<td>
+				<iframe width="450" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/998376805&color=%23db1847&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/andrey-kot-844094161" title="Zeroch" target="_blank" style="color: #cccccc; text-decoration: none;">Zeroch</a> · <a href="https://soundcloud.com/andrey-kot-844094161/mikeeq-stay-with-me" title="MikeeQ - Stay With Me" target="_blank" style="color: #cccccc; text-decoration: none;">MikeeQ - Stay With Me</a></div>
+			</td>
+			<td>
+				<iframe width="450" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/641083998&color=%2308c0fa&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/lxst_cxntury" title="LXST CXNTURY" target="_blank" style="color: #cccccc; text-decoration: none;">LXST CXNTURY</a> · <a href="https://soundcloud.com/lxst_cxntury/odium" title="ODIUM" target="_blank" style="color: #cccccc; text-decoration: none;">ODIUM</a></div>"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/andrey-kot-844094161" title="Zeroch" target="_blank" style="color: #cccccc; text-decoration: none;">Zeroch</a> · <a href="https://soundcloud.com/andrey-kot-844094161/sets/fonk" title="FONK" target="_blank" style="color: #cccccc; text-decoration: none;">FONK</a></div>
+			</td>
+		</tr>
+	</table>
+</div>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Bitte melden Sie sich an!</h2>
+      </div>
+      <div class="modal-body">
+        <form id="form_id" method="post" name="myform">
+        <p><label>User_Name :</label>
+          <input type="text" name="username" id="username"/></p>
+        <p><label>Password :</label>
+          <input type="password" name="password" id="password"/></p>
+        <p><input type="checkbox" onclick="myFunction()">Show Password </p>
+         <p id="text">WARNING! Caps lock is ON!</p>
+          <button type="button" class="logbtn" id="submit" style="display:block" onclick="validate()">Login</button>
+          <button class="buttonload" style="display:none" id="myDiv">
+            <i class="fa fa-spinner fa-spin"></i>Loading</button>
+            <script>
+              function myFunction() {
+              var x = document.getElementById("password");
+              if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
+            } 
+            </script>
+            <script>
+              var input = document.getElementById("password");
+              var text = document.getElementById("text");
+              input.addEventListener("keyup", function(event) {
+              
+              if (event.getModifierState("CapsLock")) {
+                  text.style.display = "block";
+                } else {
+                  text.style.display = "none"
+                }
+              });
+              </script>
+        </form>
+      	</div>
+	<div class="modal-footer">
+        <script src="./javascript/popup.js"></script> <!-- Popup -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

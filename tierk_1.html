@@ -1,0 +1,286 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta http-equiv="refresh" content="35" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>WebCam_NRW</title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://www.verkehr.nrw/o/map-theme/images/traffic-object/webcam.svg" />
+	<link rel="stylesheet" href="./styles/subnav.css" type="text/css" />
+	<link rel="stylesheet" href="./styles/search-container.css" type="text/css" />
+	<link rel="stylesheet" href="./styles/bootstrap.min.css">
+<script>
+//shortens document.getEgetElementById
+function element(id) {
+return document.getElementById(id);
+}
+let allSearchData = ""; //decleared to collect all search names
+
+//gets each inputs data starting from second input
+function getResults() {
+//gets value of input
+let search = element("search-input").value;
+allSearchData = ""; //clears data for each word typed
+
+hideSearchResults();
+clearSearchResults();
+clearSearchData(); //
+//starts searching from the second input
+if (search.length > 0) {
+    let counter = 0; // counts to 10
+    for (let x of name) {
+    if (counter < 10) {
+        //checks for similarities
+        if (x.toLowerCase().includes(search.toLowerCase())) {
+        //populates the suggestion div
+        element("search-results").innerHTML +=
+            "<div class='search-item' onclick='displayData(\"" +
+            x +
+            "\")'><p>" +
+            x +
+            "</p></div>";
+
+        counter++;
+        }
+    }
+    if (x.toLowerCase().includes(search.toLowerCase()))
+        //saves all the realated names
+        allSearchData += "<p>" + x + "</p>";
+    }
+    displaySearchResults();
+}
+}
+//displays the suggestion div
+function displaySearchResults() {
+element("search-results").style.display = "block";
+}
+//clears the suggestion div
+function clearSearchResults() {
+element("search-results").innerHTML = "";
+}
+
+//hides the suggestion div
+function hideSearchResults() {
+element("search-results").style.display = "none";
+}
+//displays names when you click a suggestions
+function displayData(name) {
+element("search-data").innerHTML = "<p>" + name + "</p>";
+hideSearchResults();
+}
+//clears names displayed from search result
+function clearSearchData() {
+element("search-data").innerHTML = "";
+}
+//gets results after each input
+element("search-input").oninput = function() {
+getResults();
+};
+
+element("search-input").addEventListener("keyup", function(event) {
+// Number 13 is the "Enter" key on the keyboard
+if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    displayAllData(allSearchData);
+}
+});
+</script>
+<script src="./javascript/database.js"></script> <!-- Database of Searchsystem -->
+</head>
+<body background="black">
+<header>
+	<!-- The navigation menu -->
+          <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="subnav">
+              <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
+              <div class="subnav-content">
+                <a href="./index2.html">Alte Seite</a>
+                <a href="./video.html">Video Seite</a>
+                <a href="./next.html">Music Seite</a>
+              </div>
+            </div>
+            <div class="subnav">
+              <button class="subnavbtn">For me <i class="fa fa-caret-down"></i></button>
+              <div class="subnav-content">
+                <a href="./test.html">Funny</a>
+                <a href="./usagilo.html">Experiment</a>
+                <a href="./Snake/snake.html">Snake_Game</a>
+		<a href="./Snake/Dwarfs/index.html">Dwarfs_Game</a>
+              </div>
+            </div>
+            <div class="subnav">
+              <button class="subnavbtn">WebCam_NRW <i class="fa fa-caret-down"></i></button>
+              <div class="subnav-content">
+                <a href="./tierk.html">First Page</a>
+              </div>
+              </div>
+            <div class="subnav">
+              <button class="subnavbtn">Animation <i class="fa fa-caret-down"></i></button>
+              <div class="subnav-content">
+                <a href="./animation/ani_clock.html">Clock</a>
+                <a href="./animation/roll_caster.html">Roll Caster</a>
+              </div>
+            </div>
+            <a href="#">Contact</a>
+            <div class="subnav" style="align-self: flex-end;">
+              <div class="container-out" style="text-align: right;">
+                <div class="container-in">
+                <div class="search-container">
+                  <div class="search-engine">
+                    <input
+                      type="input"
+                      id="search-input"
+                      autocomplete="on"
+                      placeholder="Hit Enter to Search"/>
+                  </div>
+                <div id="search-results"></div>
+              <div id="search-data"></div>
+            </div>
+          </div>
+        </header>
+<div class="id_01654">
+	<div class="table">
+		<table border="1px">
+			<th color="green">
+			Autobahn A46_Fleher Brücke Südl.
+			</th>
+			<tr>
+				<td>
+				<div class="video_2131"> 
+					<iframe width="469" height="300" id="2130" src="https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10104695582349821208" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+				</td>
+			
+			
+				<td>
+				<div class="video_2130"> 
+					<iframe width="469" height="300" id="2130" src="https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10104015717975774365" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+			
+			
+				<td>
+				<div class="video_2129"> 
+					<iframe width="469" height="300" id="2129" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+			
+			
+				<td>
+				<div class="video_2128"> 
+					<iframe width="469" height="300" id="2128" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+			</tr>
+			<th color="green">
+			Autobahn A46_Fleher Brücke (107)
+			</th>
+			<tr>
+			
+				<td>
+				<div class="video_2127">
+					<iframe width="469" height="300" id="2127" src="https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10104296938723739634" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+				
+				<td>
+				<div class="video_2126">
+					<iframe width="469" height="300" id="2126" src="https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10100253688674747061" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+				
+				<td>
+				<div class="video_2125">
+					<iframe width="469" height="300" id="2125" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+				
+				<td>
+				<div class="video_2124">
+					<iframe width="469" height="300" id="2124" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+			</tr>
+			<th color="green">
+			Autobahn A46_AS Düsseldorf-Bilk
+			</th>
+			<tr>
+			
+				<td>
+				<div class="video_2123">
+					<iframe width="469" height="300" id="2123" src="https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10106070948267010171" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+				
+				<td>
+				<div class="video_2122">
+					<iframe width="469" height="300" id="2122" src="https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10100308460257231676" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+				
+				<td>
+				<div class="video_2121">
+					<iframe width="469" height="300" id="2121" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+				
+				<td>
+				<div class="video_2120">
+					<iframe width="469" height="300" id="2120" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+			</tr>
+			<th color="green">
+
+			</th>
+			<tr>
+			
+				<td>
+				<div class="video_2123">
+					<iframe width="469" height="300" id="2119" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+				
+				<td>
+				<div class="video_2122">
+					<iframe width="469" height="300" id="2118" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+
+				<td>
+				<div class="video_2121">
+					<iframe width="469" height="300" id="2117" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+
+				</div>
+				</td>
+
+				<td>
+				<div class="video_2120">
+					<iframe width="469" height="300" id="2116" src="" frameborder="0" allow="autoplay;loop" allowfullscreen></iframe>
+				</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+</body>
+</html>
