@@ -182,10 +182,31 @@
     <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SCROLL UP</span>
     </div>
   </div>
-  <div w3-include-html="content-1.html"></div> 
-  <script>
-    includeHTML();
-  </script>
+ <div id="myModal" class="modal">
+    
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Bitte melden Sie sich an!</h2>
+              </div>
+              <div class="modal-body">
+                <form id="form_id" method="post" name="myform">
+                <p><label>User_Name :</label>
+                  <input type="text" name="username" id="username"/></p>
+                <p><label>Password :</label>
+                  <input type="password" name="password" id="password"/></p>
+                <p><input type="checkbox" onclick="myFunction()">Show Password </p>
+                 <p id="text">WARNING! Caps lock is ON!</p>
+                  <button type="button" class="logbtn" id="submit" style="display:block" onclick="validate()">Login</button>
+                  <button class="buttonload" style="display:none" id="myDiv">
+                    <i class="fa fa-spinner fa-spin"></i>Loading</button>
+                </form>
+                  </div>
+            <div class="modal-footer">
+              </div>
+            </div>
+          </div>
 </div>
 <div class="box-right">
   <div class="box-logo">
