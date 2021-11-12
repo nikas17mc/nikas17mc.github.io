@@ -1,223 +1,78 @@
-<style>
-    /* Popup Style */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        -webkit-animation-name: fadeIn; /* Fade in the background */
-        -webkit-animation-duration: 0.4s;
-        animation-name: fadeIn;
-        animation-duration: 0.4s
-      }
-      
-      /* Modal Content */
-      .modal-content {
-        position: fixed;
-        bottom: 0;
-        background-color: #fefefe;
-        width: 100%;
-        -webkit-animation-name: slideIn;
-        -webkit-animation-duration: 0.6s;
-        animation-name: slideIn;
-        animation-duration: 0.6s
-      }
-      
-      /* The Close Button */
-      .close {
-        color: white;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-      
-      .close:hover,
-      .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      
-      .modal-header {
-        padding: 2px 16px;
-        background-color: #5cb85c;
-        color: white;
-      }
-      
-      .modal-body {
-        padding: 2px 16px;
-    }
-      
-      .logbtn{
-        background-color: #04AA6D;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 20%;
-      }
-      .logbtn:hover{
-        opacity: 0.8s;
-      }
-      .buttonload {
-        background-color: #04AA6D; /* Green background */
-        border: none; /* Remove borders */
-        color: white; /* White text */
-        padding: 12px 24px; /* Some padding */
-        font-size: 16px; /* Set a font-size */
-      }
-      
-      /* Add a right margin to each icon */
-      .buttonload i.fa {
-        margin-left: -12px;
-        margin-right: 8px;
-      }
-      .modal-footer {
-        padding: 2px 16px;
-        background-color: #5cb85c;
-        color: white;
-      }
-    
-      /* Add Animation */
-      @-webkit-keyframes slideIn {
-        from {bottom: -300px; opacity: 0} 
-        to {bottom: 0; opacity: 1}
-      }
-    
-      @keyframes slideIn {
-        from {bottom: -300px; opacity: 0}
-        to {bottom: 0; opacity: 1}
-      }
-    
-      @-webkit-keyframes fadeIn {
-        from {opacity: 0} 
-        to {opacity: 1}
-      }
-    
-      @keyframes fadeIn {
-        from {opacity: 0} 
-        to {opacity: 1}
-      }
-    </style>
-    
-    
-    
-    
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-    
-            <!-- Modal content -->
-            <div class="modal-content">
-              <div class="modal-header">
-                <span class="close">&times;</span>
-                <h2>Bitte melden Sie sich an!</h2>
-              </div>
-              <div class="modal-body">
-                <form id="form_id" method="post" name="myform">
-                <p><label>User_Name :</label>
-                  <input type="text" name="username" id="username"/></p>
-                <p><label>Password :</label>
-                  <input type="password" name="password" id="password"/></p>
-                <p><input type="checkbox" onclick="myFunction()">Show Password </p>
-                 <p id="text">WARNING! Caps lock is ON!</p>
-                  <button type="button" class="logbtn" id="submit" style="display:block" onclick="validate()">Login</button>
-                  <button class="buttonload" style="display:none" id="myDiv">
-                    <i class="fa fa-spinner fa-spin"></i>Loading</button>
-                </form>
-                  </div>
-            <div class="modal-footer">
-              </div>
-            </div>
-          </div>
 <script>
-  // Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+//shortens document.getEgetElementById
+function element(id) {
+  return document.getElementById(id);
   }
-}
-
-    //Show Password or not
-function myFunction() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  } 
-
-
-//KeyCode
-  var wage = document.getElementById("password");
-  wage.addEventListener("keydown", function (e) {
-      if (e.KeyboardEvent.keyCode == 13) {
-          test(e);
-      }
-  });
-  function test(e) {
-      dokument.getElementById("submit").innerHTML = onclick.validate()
-      
-  }
-
-
-//Capslock
-  var input = document.getElementById("password");
-  var text = document.getElementById("text");
-  input.addEventListener("keyup", function(event) {
+  let allSearchData = ""; //decleared to collect all search names
   
-  if (event.getModifierState("CapsLock")) {
-      text.style.display = "block";
-    } else {
-      text.style.display = "none"
-    }
+  //gets each inputs data starting from second input
+  function getResults() {
+  //gets value of input
+  let search = element("search-input").value;
+  allSearchData = ""; //clears data for each word typed
+  
+  hideSearchResults();
+  clearSearchResults();
+  clearSearchData(); //
+  //starts searching from the second input
+  if (search.length > 0) {
+      let counter = 0; // counts to 10
+      for (let x of name) {
+      if (counter < 10) {
+          //checks for similarities
+          if (x.toLowerCase().includes(search.toLowerCase())) {
+          //populates the suggestion div
+          element("search-results").innerHTML +=
+              "<div class='search-item' onclick='displayData(\"" +
+              x +
+              "\")'><p>" +
+              x +
+              "</p></div>";
+  
+          counter++;
+          }
+      }
+      if (x.toLowerCase().includes(search.toLowerCase()))
+          //saves all the realated names
+          allSearchData += "<p>" + x + "</p>";
+      }
+      displaySearchResults();
+  }
+  }
+  //displays the suggestion div
+  function displaySearchResults() {
+  element("search-results").style.display = "block";
+  }
+  //clears the suggestion div
+  function clearSearchResults() {
+  element("search-results").innerHTML = "";
+  }
+  
+  //hides the suggestion div
+  function hideSearchResults() {
+  element("search-results").style.display = "none";
+  }
+  //displays names when you click a suggestions
+  function displayData(name) {
+  element("search-data").innerHTML = "<p>" + name + "</p>";
+  hideSearchResults();
+  }
+  //clears names displayed from search result
+  function clearSearchData() {
+  element("search-data").innerHTML = "";
+  }
+  //gets results after each input
+  element("search-input").oninput = function() {
+  getResults();
+  };
+  
+  element("search-input").addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      displayAllData(allSearchData);
+  }
   });
-
-
-
-//Get the button:
-mybutton = document.getElementById("myBtn-jump");
-
-// When the user scrolls down 600px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-  mybutton.style.display = "block";
-} else {
-  mybutton.style.display = "none";
-}
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-document.body.scrollTop = 0; // For Safari
-document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-} 
 </script>
