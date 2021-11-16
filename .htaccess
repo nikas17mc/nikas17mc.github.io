@@ -6,7 +6,7 @@
 # Ausklammern von Zeilen mittels #
 # Blogpost zum Thema: https://www.was-mit-internet.de/htaccess-konfiguration/
 # ----------
-
+RewriteRule ^index.html$ / [L]
 
 # Domainumleitung mit https und www
 RewriteCond %{HTTP_HOST} ^nikas17mc.github.io [NC]
@@ -19,7 +19,7 @@ RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !(.*)/$
-RewriteRule ^(.*)$ https://nikas17mc.github.io/$1/ [L,R=301]
+RewriteRule ^(.*)$ https://nikas17mc.github.tld/$1/ [L,R=301]
 
 # ----------
 
