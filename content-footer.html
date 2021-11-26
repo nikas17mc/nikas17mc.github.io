@@ -1,0 +1,95 @@
+<footer id="myFooter">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <h2 class="logo"><a href="https://github.com/nikischmicki7q945"><img src="./icons/logo_small.png" height="115" width="100%"></a></h2>
+        </div>
+        <div class="col-sm-2">
+            <h5>Get started</h5>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sign up</a></li>
+                <li><a href="#">Downloads</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-2">
+            <h5>About us</h5>
+            <ul>
+                <li><a href="#">Company Information</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Reviews</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-2">
+            <h5>Support</h5>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Help desk</a></li>
+                <li><a href="#">Forums</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <div class="social-networks">
+                <a href="https://twitter.com/MCgamerNiko" class="twitter_footer"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.facebook.com/nikas.kreki23425/" class="facebook_footer"><i class="fa fa-facebook"></i></a>
+                <a href="https://google.de/" class="google_footer"><i class="fa fa-google-plus"></i></a>
+                <a href="https://www.youtube.com/channel/UC468_sAEFn-BDNAV_Dd5zNg/" class="youtube_footer"><i class="fa fa-youtube"></i></a>
+            </div>
+            <button type="button" class="btn btn-default">Contact us</button>
+        </div>
+    </div>
+</div>
+<div class="footer-copyright">
+    <p> © 2021 Copyright Text </p>
+</div>
+  <div id="footer-cookie">
+    <span id="description">
+      Hey YOU! Yes you...!! Give me Cookies!?! PLS...... <a href="https://mads.de/das-sind-cookies/">Mehr erfahren</a>
+    </span>
+    <span id="accept"><a href="javascript:void(0)" title="Give Cookies">Give Cookies</a></span>
+    <script>
+      /*
+           www.dakitec.de - Cookie Banner
+           https://dakitec.de/blog/cookie-banner-selbst-erstellen
+           Dieses Skript zeigt den Banner an, wenn er noch nicht bestätigt wurde
+         */
+           var footerCookie = document.querySelector("#footer-cookie");
+           var footerCookieAccept = document.querySelector("#accept");
+       
+           if (document.cookie.indexOf("dakitecCookieBanner=") == -1) {
+             footerCookie.style.display = "block";
+           }
+       
+           footerCookieAccept.onclick = function(e) {
+             var cookieDate = new Date();
+             cookieDate.setTime(new Date().getTime() + 31104000000);
+       
+             document.cookie = "dakitecCookieBanner = 1; path=/; secure; expires=" + cookieDate.toUTCString();
+       
+             footerCookie.style.display = "none";
+           };
+         </script>
+  </div>
+</footer>
+<button onclick="topFunction()" id="myBtn-jump" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+<script>
+  //Get the button:
+  mybutton = document.getElementById("myBtn-jump");
+  
+  // When the user scrolls down 600px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+  if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  } 
+  </script>
