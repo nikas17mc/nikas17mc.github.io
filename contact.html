@@ -1,12 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<html>
+  <head>
     
-</body>
+    <style>
+      #orbit-map-container {
+        width: 100%;
+        height: 600px;
+      }
+    </style>
+    
+  </head>
+  <body>
+    
+    <div id="orbit-map-container"></div>
+    
+    <script src="https://platform-cdn.leolabs.space/sdk/v1"></script>
+    <script>
+      var containerEl = document.getElementById('orbit-map-container');
+      var config = {/* see below for configuration details */};
+      var map = new leolabs.OrbitMap3d(containerEl, config);
+    </script>
+    <script>
+      var config = {
+        apiAccessKey: undefined,    // required. e.g. 'abcdefghijklm123'
+        catalogNumbers: undefined,  // required. e.g. ['L335', 4793, 'L225', 36508]
+        epoch: new Date(),
+        startOffset: 720,
+        endOffset: 720,
+        animation: 'none',
+
+        showUncertaintyEllipsoids: true,
+        followObject: true,
+        showObjectNames: true,
+        showOrbitPath: true,
+        showLeoLabsInstruments: true,
+        showRadioHorizons: false,
+        showUncertaintyAxes: false,
+
+        objectColor: '#cccccc',
+        orbitPathColor: '#ffd480',
+        uncertaintyEllipsoidColor: '#ffff00',
+        radioHorizonColor: '#ffa500',
+
+        minimizeMenu: false,
+        showMenuItems: {
+        animation: true,
+        viewLive: true,
+        time: true,
+        speed: true,
+        followObject: true,
+        orbitPath: true,
+        uncertaintyAxes: true,
+        objectNames: true,
+        radioHorizons: true,
+        instruments: true
+    },
+        customObjectNames: null,
+        excludeCatalogNumberFromGlobeObjectName: false
+};  
+
+
+    </script>
+  </body>
 </html>

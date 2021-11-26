@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Meine tolle Seite"
-AuthUserfile "/nikas17mc.github.io/.htpassword"
-Require valid-user
