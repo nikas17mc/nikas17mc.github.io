@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--Code By Webdevtrick ( https://webdevtrick.com )-->
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Advance Video Player | Webdevtrick.com</title>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./styles/video-css/video_style.css">
+</head>
+<body>
+ 
+<main class="site-content">
+ 
+  <section class="video-area">
+    <div class="wrapper">
+ 
+      <header class="video-header">
+        <h2 class="video-title">HTML 5 Video Player</h2>
+        <small class="video-author">Code By <a href="https://webdevtrick.com/">WebDevTrick</a></small>
+      </header>
+ 
+      <div class="video-column">
+        <div class="video-player">
+          <button id="btnReplay" class="btn-replay"><span class="fontawesome-refresh"></span></button>
+ 
+          <video id="video" class="video" src="https://webdevtrick.com/wp-content/uploads/horizontal-scrolling-menu-bar.mp4" type="video/mp4" poster="https://webdevtrick.com/wp-content/uploads/horizontal-scroll-navigation.jpg" preload="none">
+                        </video>
+ 
+          <div class="video-controls">
+ 
+            <button id="btnState"><span class="fontawesome-play"></span></button>
+ 
+            <span id="timePlayed">00:00</span>
+ 
+            <div class="video-bars">
+              <input type="range" id="barSeeker" class="bar-seeker" value="0" min="0" max="100" step="0.1">
+              <progress value="0" max="100" step="0.1" id="barProgress" class="bar-progress"></progress>
+              <progress value="0" max="100" step="0.1" id="barBuffer" class="bar-buffer"></progress>
+            </div>
+ 
+            <div id="timeBubble" class="time-bubble">00:00</div>
+ 
+            <span id="timeDuration">00:00</span>
+ 
+            <button id="btnSound" class="btn-sound"><span class="fontawesome-volume-up"></span></button>
+            <input type="range" id="sliderVolume" class="slider-volume" value="10" min="0" max="10">
+ 
+          </div>
+        </div>
+ 
+        <div class="video-info">
+ 
+          <div class="description">
+            <p>How we can create a scrolling navigation bar using HTML and CSS? Solution: Horizontal Scroll Navigation Using HTML CSS, Scrolling Menu Bar.</p>
+          </div>
+        </div>
+      </div>
+ 
+      <div id="playlist" class="playlist">
+        <header class="next">Comming Next</header>
+ 
+        <a href="https://webdevtrick.com/wp-content/uploads/clip-path-animation-hover.mp4" class="next-video">
+          <img src="https://webdevtrick.com/wp-content/uploads/css-clip-path-animation-card.jpg" alt="">
+          <h3 class="single-video-title">CSS Clip-Path</h3>
+          <p class="single-video-info">Built in Pure CSS</p>
+            <span class="single-video-des">How we can create an animated hover effect card using CSS clip-path? Solution: CSS Clip Path Animation Card, Clip-Path Hover Cards.
+ 
+            </span></p>
+        </a>
+ 
+        <a href="https://webdevtrick.com/wp-content/uploads/animated-bar-graphs-javascript.mp4" class="next-video">
+          <img src="https://webdevtrick.com/wp-content/uploads/javascript-animated-bar-graph.jpg" alt="">
+          <h3 class="single-video-title">Bar Graphs</h3>
+          <p class="single-video-info">Built in JavaScript </p>
+          <span class="single-video-des">How we can create Bar Graphs With Animation using JavaScript, HTML, & CSS? Solution: JavaScript Animated Bar Graph. In Other Words, Bar Chart With Animation Effects.
+ 
+            </span></p>
+        </a>
+ 
+        <a href="https://webdevtrick.com/wp-content/uploads/animated-login-page-design.mp4" class="next-video">
+          <img src="https://webdevtrick.com/wp-content/uploads/login-page-in-html-css.jpg" alt="">
+          <h3 class="single-video-title">Login Page</h3>
+          <p class="single-video-info">Pure HTML & CSS </p>
+            <span class="single-video-des">How we can create an animated login page design using HTML and CSS? Solution: Animated Login Page In HTML CSS, Example and Source Code.
+ 
+            </span></p>
+        </a>
+ 
+        <a href="https://webdevtrick.com/wp-content/uploads/horizontal-scrolling-menu-bar.mp4" class="next-video played-video">
+          <img src="https://webdevtrick.com/wp-content/uploads/horizontal-scroll-navigation.jpg" alt="">
+          <h3 class="single-video-title">Horizontal Scroll Menu </h3>
+          <p class="single-video-info">Built in HTML CSS </p>
+            <span class="single-video-des">How we can create a scrolling navigation bar using HTML and CSS? Solution: Horizontal Scroll Navigation Using HTML CSS, Scrolling Menu Bar.</span></p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+  <script  src="./javascript/video-js/function.js"></script>
+ 
+</body>
+</html>
