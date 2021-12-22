@@ -1,103 +1,149 @@
 <!DOCTYPE html>
-<!--Code By Webdevtrick ( https://webdevtrick.com )-->
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HTML Advance Video Player | Webdevtrick.com</title>
-  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./styles/video-css/video_style.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #video_player_box{width: 550px; background:#000; margin:0px auto;}
+    #video_controls_bar{width:550px; background: #333; padding:8px; color:#CCC; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+    button#playpausebtn{
+      background: url(icons/play.png);
+      border: 16px;
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    #seekslider{margin-left: 10px;}
+    button#playpausebtn:hover{opacity: 1;}
+    input#seekslider{width:180px;}
+    button#mutebtn{
+      background: url(icons/volume.png);
+      border: 16px;
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+      opacity: 0.7;
+      margin-left: 44px;
+    }
+    #volumeslider{margin-left: 5px;}
+    button#playpausebtn:hover{opacity: 1;}
+    input#volumeslider{width:80px}
+    input[type='range'] {
+      -webkit-appearance: none !important;
+      background: #000;
+      border: #666 1px solid;
+      height: 4px;
+    }
+    input[type='range']::-webkit-slider-thumb {
+      -webkit-appearance: none !important;
+      background: #FFF;
+      height: 15px;
+      width: 15px;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    var vid, playbtn, seekslider, curtimetext, durtimetext, mutebtn, volumeslider, fullscreenbtn;
+
+    function intializePlayer(){
+      //Set objekt reference
+      vid = document.getElementById("my_video");
+      playbtn = document.getElementById("playpausebtn");
+      seekslider = document.getElementById("seekslider");
+      curtimetext = document.getElementById("curtimetext");
+      durtimetext = document.getElementById("durtimetext");
+      mutebtn = document.getElementById("mutebtn");
+      volumeslider = document.getElementById("volumeslider");
+      fullscreenbtn = document.getElementById("fullscreenbtn");
+      //Add event listeners
+      playbtn.addEventListener("click",playPause,false);
+      seekslider.addEventListener("change",vidSeek,false);
+      vid.addEventListener("timeupdate",seektimeupdate,false);
+      mutebtn.addEventListener("click",vidmute,false);
+      volumeslider.addEventListener("change",setvolume,false);
+      fullscreenbtn.addEventListener("click",toggleFullScreen,false);
+    }
+    window.onload = intializePlayer;
+
+    function playPause(){
+      if(vid.paused) {
+        vid.play();
+        playbtn.style.background = "url(icons/pause-button.png)";
+      } else {
+        vid.pause();
+        playbtn.style.background = "url(icons/play.png)";
+      }
+    }
+    function vidSeek(){
+      var seekto = vid.duration * (seekslider.value / 100);
+      vid.currentTime = seekto;
+    }
+    function seektimeupdate(){
+      var nt = vid.currentTime * (100 / vid.duration);
+      seekslider.value = nt;
+      var curmins = Math.floor(vid.currentTime / 60);
+      var cursecs = Math.floor(vid.currentTime - curmins * 60);
+      var durmins = Math.floor(vid.duration / 60);
+      var dursecs = Math.floor(vid.duration - durmins * 60);
+      if(cursecs < 10){
+        cursecs = "0"+cursecs;
+      }
+      if(dursecs < 10){
+        dursecs = "0"+dursecs;
+      }
+      curtimetext.innerHTML = curmins+":"+cursecs;
+      durtimetext.innerHTML = durmins+":"+dursecs;
+    }
+    function vidmute(){
+      if(vid.muted) {
+        vid.muted = false;
+        mutebtn.style.background = "url(icons/volume.png)";
+        volumeslider.value = 100;
+      } else {
+        vid.muted = true;
+        mutebtn.style.background = "url(icons/mute.png)";
+        volumeslider.value = 0;
+      }
+    }
+    function setvolume(){
+      vid.volume = volumeslider.value / 100;
+      if(volumeslider.value < 1){
+        vid.muted = true;
+        mutebtn.style.background = "url(icons/mute.png)";
+      }
+      else{
+        vid.muted = false;
+        mutebtn.style.background = "url(icons/volume.png)";
+      }
+    }
+    function toggleFullScreen(){
+      if(vid.requestFullScreen){
+        vid.requestFullScreen();
+      } else if(vid.webkitRequestFullScreen){
+        vid.webkitRequestFullScreen();
+      } else if(vid.mozRequestFullSceen){
+        vid.mozRequestFullSceen();
+      }
+    }
+  </script>
 </head>
 <body>
- 
-<main class="site-content">
- 
-  <section class="video-area">
-    <div class="wrapper">
- 
-      <header class="video-header">
-        <h2 class="video-title">HTML 5 Video Player</h2>
-        <small class="video-author">Code By <a href="https://webdevtrick.com/">WebDevTrick</a></small>
-      </header>
- 
-      <div class="video-column">
-        <div class="video-player">
-          <button id="btnReplay" class="btn-replay"><span class="fontawesome-refresh"></span></button>
- 
-          <video id="video" class="video" src="https://webdevtrick.com/wp-content/uploads/horizontal-scrolling-menu-bar.mp4" type="video/mp4" poster="https://webdevtrick.com/wp-content/uploads/horizontal-scroll-navigation.jpg" preload="none">
-                        </video>
- 
-          <div class="video-controls">
- 
-            <button id="btnState"><span class="fontawesome-play"></span></button>
- 
-            <span id="timePlayed">00:00</span>
- 
-            <div class="video-bars">
-              <input type="range" id="barSeeker" class="bar-seeker" value="0" min="0" max="100" step="0.1">
-              <progress value="0" max="100" step="0.1" id="barProgress" class="bar-progress"></progress>
-              <progress value="0" max="100" step="0.1" id="barBuffer" class="bar-buffer"></progress>
-            </div>
- 
-            <div id="timeBubble" class="time-bubble">00:00</div>
- 
-            <span id="timeDuration">00:00</span>
- 
-            <button id="btnSound" class="btn-sound"><span class="fontawesome-volume-up"></span></button>
-            <input type="range" id="sliderVolume" class="slider-volume" value="10" min="0" max="10">
- 
-          </div>
-        </div>
- 
-        <div class="video-info">
- 
-          <div class="description">
-            <p>How we can create a scrolling navigation bar using HTML and CSS? Solution: Horizontal Scroll Navigation Using HTML CSS, Scrolling Menu Bar.</p>
-          </div>
-        </div>
-      </div>
- 
-      <div id="playlist" class="playlist">
-        <header class="next">Comming Next</header>
- 
-        <a href="https://webdevtrick.com/wp-content/uploads/clip-path-animation-hover.mp4" class="next-video">
-          <img src="https://webdevtrick.com/wp-content/uploads/css-clip-path-animation-card.jpg" alt="">
-          <h3 class="single-video-title">CSS Clip-Path</h3>
-          <p class="single-video-info">Built in Pure CSS</p>
-            <span class="single-video-des">How we can create an animated hover effect card using CSS clip-path? Solution: CSS Clip Path Animation Card, Clip-Path Hover Cards.
- 
-            </span></p>
-        </a>
- 
-        <a href="https://webdevtrick.com/wp-content/uploads/animated-bar-graphs-javascript.mp4" class="next-video">
-          <img src="https://webdevtrick.com/wp-content/uploads/javascript-animated-bar-graph.jpg" alt="">
-          <h3 class="single-video-title">Bar Graphs</h3>
-          <p class="single-video-info">Built in JavaScript </p>
-          <span class="single-video-des">How we can create Bar Graphs With Animation using JavaScript, HTML, & CSS? Solution: JavaScript Animated Bar Graph. In Other Words, Bar Chart With Animation Effects.
- 
-            </span></p>
-        </a>
- 
-        <a href="https://webdevtrick.com/wp-content/uploads/animated-login-page-design.mp4" class="next-video">
-          <img src="https://webdevtrick.com/wp-content/uploads/login-page-in-html-css.jpg" alt="">
-          <h3 class="single-video-title">Login Page</h3>
-          <p class="single-video-info">Pure HTML & CSS </p>
-            <span class="single-video-des">How we can create an animated login page design using HTML and CSS? Solution: Animated Login Page In HTML CSS, Example and Source Code.
- 
-            </span></p>
-        </a>
- 
-        <a href="https://webdevtrick.com/wp-content/uploads/horizontal-scrolling-menu-bar.mp4" class="next-video played-video">
-          <img src="https://webdevtrick.com/wp-content/uploads/horizontal-scroll-navigation.jpg" alt="">
-          <h3 class="single-video-title">Horizontal Scroll Menu </h3>
-          <p class="single-video-info">Built in HTML CSS </p>
-            <span class="single-video-des">How we can create a scrolling navigation bar using HTML and CSS? Solution: Horizontal Scroll Navigation Using HTML CSS, Scrolling Menu Bar.</span></p>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
-  <script  src="./javascript/video-js/function.js"></script>
- 
+<div id="video_player_box">
+  <video id="my_video" widht="550" height="320">
+    <source src="video/criminal-russia-with-memes.mp4">
+  </video>
+  <div id="video_controls_bar">
+    <button id="playpausebtn">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <input id="seekslider" type="range" min="0" max="100" value="0" step="1"><span id="seek-tooltip"></span>
+    <span id="curtimetext">00:00</span> | <span id="durtimetext">00:00</span>
+    <button id="mutebtn">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <input id="volumeslider" type="range" min="0" max="100" value="100" step="1">
+    <button id="fullscreenbtn">[ &nbsp; ]</button>
+  </div>
+</div>
 </body>
 </html>
