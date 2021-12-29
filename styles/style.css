@@ -618,15 +618,15 @@ body{
   .box-body{
     float: left;
     border: solid black;
-    width:80%;
+    width:78%;
     left:10px;
   }
   
   .box-right {
   background-color: rgb(44, 124, 170);
-  width:300px;
+  width:320px;
   left: 40px;
-  margin-left: 80%;
+  margin-left: 76%;
   position:fixed;
   top:12.8%;
   }
@@ -638,22 +638,23 @@ body{
     background-color:white;
   }
   .dif-one ul {
-    margin:2;
+    margin:0;
     top:1;
     display: block;
     text-align: center;
     padding: 16px;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
   
   }
   .dif-one ul li {
     background-color: greenyellow;
-    padding: 3 2 1;
-    margin:5;
-    border-radius: 8px;
+    padding:2;
+    margin:2;
+    border-radius: 7px;
+    margin-right: -10px;
   }
-  @media screen and (max-width: 1680px) {
+  @media screen and (max-width: 760px) {
     .box-right{
       display:none;
     }
