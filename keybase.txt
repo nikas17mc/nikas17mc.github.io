@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/nikax17mc
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://nikas17mc.github.io
+  * I am nikax17mc (https://keybase.io/nikax17mc) on keybase.
+  * I have a public key ASDXTCRW-hGjPMDdSnzbg_PS7ElsIZ94E7Rh6MZ_pJrG1wo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120d74c2456fa11a33cc0dd4a7cdb83f3d2ec496c219f7813b461e8c67fa49ac6d70a",
+      "host": "keybase.io",
+      "kid": "0120d74c2456fa11a33cc0dd4a7cdb83f3d2ec496c219f7813b461e8c67fa49ac6d70a",
+      "uid": "432ff46028dbabc519ea704fcb5b3319",
+      "username": "nikax17mc"
+    },
+    "merkle_root": {
+      "ctime": 1646942734,
+      "hash": "c295a918103c08491364dfe20900b067c43508cb37f148fda43e01c38f95f61b6bbe838f1b2b87d31950031b93e7541234daf476c01c4957a2c74362b0a1b94d",
+      "hash_meta": "f1284079c55cf7222da1742c0ed9e775aac3fc35022d9b889235474bc3890abb",
+      "seqno": 22049802
+    },
+    "service": {
+      "entropy": "TuaAPvQFgxyz5FekB9ptnuoo",
+      "hostname": "nikas17mc.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.9.0"
+  },
+  "ctime": 1646942757,
+  "expire_in": 504576000,
+  "prev": "be06d11e20df24edce31d7070ba98d2dbf6b903e7f36f4af5e2bbecfc10ba538",
+  "seqno": 8,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg10wkVvoRozzA3Up824Pz0uxJbCGfeBO0YejGf6SaxtcKp3BheWxvYWTESpcCCMQgvgbRHiDfJO3OMdcHC6mNLb9rkD5/NvSvXiu+z8ELpTjEII3+VTrW3zvziQSLeRt53mjWxIF1A0o22sOxmQyehtWyAgHCo3NpZ8RAxs0M4tVxYLNXZZYAC4ZcoX3EsfjfojFq2OMu7X6Y9f/FWhfhNz1KlsKe6XDPWY5SEPSmLGetEa7TD4OqyzkDCqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEILd0nGake1JqyT6igq/Z7DZSDTtWDzB9oJmuI34Gt6Ljo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/nikax17mc
+
+==================================================================
